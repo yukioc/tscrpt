@@ -1,0 +1,9 @@
+*.o
+*.gcno
+*.gcda
+*.gcov
+.gitignore
+html
+tscrpt
+.depend
+
