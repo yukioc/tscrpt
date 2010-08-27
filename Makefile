@@ -21,7 +21,7 @@ SRC_ALL		+=$(TEST_SRC)
 CC	:=g++
 CXX	:=g++
 
-CPPFLAGS	:=-O3
+CFLAGS		:=-O3
 CPPFLAGS	+=-Wall -Wextra
 CPPFLAGS	+=-Wno-unused-parameter
 CPPFLAGS	+=-Wformat=2 -Wstrict-aliasing=2 -Wdisabled-optimization -Wfloat-equal -Wpointer-arith -Wcast-align -Wredundant-decls
@@ -35,9 +35,9 @@ INCLUDES	:=-I.
 ifdef APP_VER
 CPPFLAGS	+=-DVERSION="\"${APP_VER}\""
 endif
-ifdef TEST
-CPPFLAGS	+=-g
-CPPFLAGS	+=-DTEST -ftest-coverage -fprofile-arcs 
+ifeq ($(TEST),1)
+CFLAGS		+=-g
+CFLAGS		+=-DTEST -ftest-coverage -fprofile-arcs 
 APP_O		+=$(TEST_SRC:%.cpp=%.o)
 endif
 
